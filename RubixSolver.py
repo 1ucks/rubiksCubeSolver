@@ -1,20 +1,24 @@
-#Rubik's Cube foundation program
+#Rubik's Cube solving program
 #@author: Lux Wooten
 import time
 autoDo = 0
-pynDo = input('Do you have pynput installed? ')
+pynDo = input('Do you have pynput installed? (If you want more info type "i") ')
 doScramble = 0
 if(pynDo == 'y' or pynDo == 'yes'):
     from pynput.keyboard import Key, Controller
     keyboard = Controller()
-    auto = input('Perform auto? ')
+    auto = input('Perform auto? (For more information type "i") ')
     if(auto == 'y'):
         autoDo = True
-    autoScramble = input('Do you want the program to auto scramble it?')
+    elif(auto == 'i'):
+        print('The program will automatically turn the sides on the cube on the website rubikscu.be. Have the website pulled up when you are going to use this feature.')
+    autoScramble = input('Do you want the program to auto scramble it? ')
     if(autoScramble == 'y'):
         import random
         doScramble = 1
- 
+elif(pynDo == 'i'):
+    print('Pynput is a library that is needed to interact with the online rubiks cube. It can be installed by typing "pip install pynput" in the terminal. Resart the program once you have installed it.')
+    input('Hit enter to continue, or control C to quit')
  
 class PynControl(object):
     """
@@ -595,7 +599,7 @@ def auto_get():
     return side
 def scramble():
     numScrambles = int(input('How many rotations do you want to use when scrambling? '))
-    print('Scrambling in 10 seconds')
+    print('Scrambling in 10 seconds, click on the website')
     time.sleep(10)
     for i in range(numScrambles):
         scrambleSide = random.randint(1, 6)
@@ -796,6 +800,7 @@ print('side6 = o')
 print('Hit enter to continue')
 input('')
 if(autoDo):
+    print('click on the website, rubikscu.be')
     time.sleep(5)
 startingTime = time.time()
 """
@@ -1514,12 +1519,12 @@ if(cube.ls[0][7][0] != 'b' or cube.ls[1][7][0] !='w' or cube.ls[2][7][0] != 'g' 
             break
         else:
             cube.rot_side_r(6)
-    
-
-
-
-
-
+   
+ 
+ 
+ 
+ 
+ 
 if(autoDo != True):
     input()
 #Last 4 corners on side 6
@@ -1630,6 +1635,12 @@ for p in range(10):
         cube.rot_side_r(1)        
 finalTime = time.time() - startingTime
 print(f'Took {finalTime} seconds to solve')
+ 
+ 
+ 
+ 
+ 
+ 
  
  
  
